@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        color-scheme: light;
+        --color-bone: 246 241 232;
+        --color-sand: 232 220 200;
+        --color-dune: 216 198 168;
+        --color-ink: 47 42 36;
+        --color-moss: 111 122 106;
+        --color-ember: 176 141 87;
+        --color-rosewood: 124 90 74;
+        --color-card: 255 255 255;
+        --color-card-border: 255 255 255;
+    }
+
+    :root[data-theme="dark"] {
+        color-scheme: dark;
+        --color-bone: 18 16 13;
+        --color-sand: 32 28 23;
+        --color-dune: 52 46 39;
+        --color-ink: 240 232 220;
+        --color-moss: 137 150 132;
+        --color-ember: 199 160 108;
+        --color-rosewood: 178 130 108;
+        --color-card: 28 25 21;
+        --color-card-border: 96 88 76;
+    }
+
+    body {
+        @apply bg-bone text-ink antialiased;
+        font-family: "Trebuchet MS", "Gill Sans", Calibri, sans-serif;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: "Garamond", "Palatino Linotype", "Book Antiqua", serif;
+    }
+}
+
+@layer components {
+    .shell {
+        @apply min-h-screen;
+        background-color: rgb(var(--color-bone));
+        background-image: radial-gradient(
+                circle at top,
+                rgb(var(--color-ember) / 0.22),
+                transparent 55%
+            ),
+            radial-gradient(
+                circle at 20% 10%,
+                rgb(var(--color-moss) / 0.18),
+                transparent 40%
+            );
+    }
+
+    .glass-card {
+        @apply rounded-xl shadow-soft backdrop-blur;
+        border: 1px solid rgb(var(--color-card-border) / 0.4);
+        background-color: rgb(var(--color-card) / 0.7);
+    }
+
+    .focus-ring {
+        @apply focus:outline-none focus:ring-2 focus:ring-ember/60 focus:ring-offset-2 focus:ring-offset-bone;
+    }
+
+    .primary-button {
+        @apply inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-bone shadow-lift transition hover:bg-rosewood focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember/70 focus-visible:ring-offset-2 focus-visible:ring-offset-bone;
+    }
+
+    .ghost-button {
+        @apply inline-flex items-center justify-center rounded-full border border-ink/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-ink transition hover:border-ink hover:text-rosewood focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember/70 focus-visible:ring-offset-2 focus-visible:ring-offset-bone;
+    }
+}
