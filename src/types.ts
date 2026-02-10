@@ -19,9 +19,15 @@ export interface PalmImages {
     rightPreview?: string | null;
 }
 
+export interface Insight {
+    insight: string;
+    time_window: string;
+    action_step: string;
+}
+
 export interface GuidanceCategory {
     category: string;
-    insights: string[];
+    insights: Insight[];
 }
 
 export interface GuidanceResponse {

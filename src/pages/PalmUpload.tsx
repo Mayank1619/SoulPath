@@ -52,6 +52,8 @@ export function PalmUpload() {
                         Left hand
                     </p>
                     <input
+                        id="left-palm"
+                        name="leftPalm"
                         type="file"
                         accept="image/*"
                         onChange={handleFileChange("left")}
@@ -74,6 +76,8 @@ export function PalmUpload() {
                         Right hand
                     </p>
                     <input
+                        id="right-palm"
+                        name="rightPalm"
                         type="file"
                         accept="image/*"
                         onChange={handleFileChange("right")}

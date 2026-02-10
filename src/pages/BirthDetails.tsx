@@ -45,12 +45,16 @@ export function BirthDetails() {
             <div className="grid gap-5 md:grid-cols-2">
                 <Field
                     label="Full Name (optional)"
+                    id="full-name"
+                    name="fullName"
                     placeholder="Your name"
                     value={details.name}
                     onChange={(event) => handleChange("name", event.target.value)}
                 />
                 <Field
                     label="Date of Birth"
+                    id="date-of-birth"
+                    name="dateOfBirth"
                     type="date"
                     value={details.dateOfBirth}
                     onChange={(event) => handleChange("dateOfBirth", event.target.value)}
@@ -58,6 +62,8 @@ export function BirthDetails() {
                 />
                 <Field
                     label="Time of Birth"
+                    id="time-of-birth"
+                    name="timeOfBirth"
                     type="time"
                     value={details.timeOfBirth}
                     onChange={(event) => handleChange("timeOfBirth", event.target.value)}
@@ -65,6 +71,8 @@ export function BirthDetails() {
                 />
                 <Field
                     label="Place of Birth"
+                    id="place-of-birth"
+                    name="placeOfBirth"
                     placeholder="City, Country"
                     value={details.placeOfBirth}
                     onChange={(event) => handleChange("placeOfBirth", event.target.value)}

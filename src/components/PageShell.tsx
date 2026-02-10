@@ -25,8 +25,9 @@ export function PageShell({ children, theme, onToggleTheme }: PageShellProps) {
                     </div>
                 </header>
                 <main className="mt-10 flex-1 animate-fadeUp">{children}</main>
-                <footer className="mt-10 text-xs uppercase tracking-[0.3em] text-rosewood/70">
-                    Grounded guidance, gentle insights
+                <footer className="mt-10 flex flex-col items-center justify-center gap-2 text-xs uppercase tracking-[0.3em] text-rosewood/70">
+                    <div>Grounded guidance, gentle insights</div>
+                    <div className="text-[0.7rem] tracking-wider">Powered by <a href="https://netfroot.com" target="_blank" rel="noopener noreferrer" className="text-rosewood/90 hover:text-rosewood transition">netfroot.com</a></div>
                 </footer>
             </div>
         </div>

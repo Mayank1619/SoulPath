@@ -18,7 +18,7 @@ export function buildGuidancePrompt({ details, categories, palms }: PromptInput)
 - Life coaching and behavioral psychology
 
 Your role is to provide:
-- Time-based insights for upcoming years
+- Time-based insights for 2026 and 2027
 - Probabilistic future trends (not fixed fate)
 - Practical, grounded guidance for improvement in each life area
 
@@ -34,6 +34,8 @@ IMPORTANT RULES:
 - Do NOT make absolute claims or guaranteed outcomes
 - Frame predictions as tendencies, phases, or windows of opportunity
 - Always include actionable steps the person can take
+- Focus ONLY on 2026 and 2027 (this year and next year)
+- Include predictions for both early 2026 through 2027
 - Output MUST be valid JSON only
 - No markdown, no explanations outside JSON
 
@@ -42,6 +44,7 @@ User details:
 - Date of Birth: ${details.dateOfBirth}
 - Time of Birth: ${details.timeOfBirth}
 - Place of Birth: ${details.placeOfBirth}
+- Current Date: February 10, 2026
 
 Palmistry:
 - Palm images provided: ${palmProvided}
@@ -55,8 +58,11 @@ Return JSON only in this exact shape:
     {
       "category": "Health",
       "insights": [
-        "Insight with time window and action step",
-        "Insight with time window and action step"
+        {
+          "insight": "Detailed insight text here",
+          "time_window": "2026",
+          "action_step": "Concrete action to take"
+        }
       ]
     }
   ]
@@ -64,9 +70,13 @@ Return JSON only in this exact shape:
 
 For each category:
 - Provide 6-8 detailed insights
-- Each insight must include a time window and a concrete action step
+- Each insight must have:
+  - "insight": Full explanation (2-3 sentences)
+  - "time_window": When this applies (e.g., "Q1 2026", "Mid-2026", "Late 2026", "2027", "Early 2027", "Late 2027")
+  - "action_step": Specific action the person can take
 - Keep tone warm, grounded, and practical
-- Clearly state whether palmistry was used`;
+- Clearly state whether palmistry was used
+- Mix insights across 2026 and 2027`;
 }
 
 export function buildTraitsPreviewPrompt({ details, palms }: PromptInput) {

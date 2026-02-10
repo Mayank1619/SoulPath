@@ -84,7 +84,7 @@ export function GuidanceProvider({ children }: { children: ReactNode }) {
         setPreviewError(null);
 
         const controller = new AbortController();
-        const timeoutId = window.setTimeout(() => controller.abort(), 20000);
+        const timeoutId = globalThis.setTimeout(() => controller.abort(), 60000);
 
         try {
             if (!details.dateOfBirth || !details.timeOfBirth || !details.placeOfBirth) {
@@ -113,7 +113,7 @@ export function GuidanceProvider({ children }: { children: ReactNode }) {
             setPreviewError(message);
             setTraitsPreview(null);
         } finally {
-            window.clearTimeout(timeoutId);
+            globalThis.clearTimeout(timeoutId);
             setIsPreviewLoading(false);
         }
     }, [details, categories, palms]);
@@ -123,7 +123,7 @@ export function GuidanceProvider({ children }: { children: ReactNode }) {
         setError(null);
 
         const controller = new AbortController();
-        const timeoutId = window.setTimeout(() => controller.abort(), 20000);
+        const timeoutId = globalThis.setTimeout(() => controller.abort(), 60000);
 
         try {
             if (!categories.length) {
@@ -149,7 +149,11 @@ export function GuidanceProvider({ children }: { children: ReactNode }) {
                     categories: [
                         {
                             category: "Guidance",
-                            insights: fallback.slice(0, 5),
+                            insights: fallback.slice(0, 5).map((text) => ({
+                                insight: text,
+                                time_window: "Ongoing",
+                                action_step: "Reflect on this guidance daily.",
+                            })),
                         },
                     ],
                 };
@@ -166,7 +170,7 @@ export function GuidanceProvider({ children }: { children: ReactNode }) {
             setError(message);
             setResponse(null);
         } finally {
-            window.clearTimeout(timeoutId);
+            globalThis.clearTimeout(timeoutId);
             setIsLoading(false);
         }
     }, [details, categories, palms]);

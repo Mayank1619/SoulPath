@@ -24,7 +24,7 @@ export async function requestGuidance(
     ];
 
     const controller = new AbortController();
-    const timeoutId = window.setTimeout(() => controller.abort(), 20000);
+    const timeoutId = globalThis.setTimeout(() => controller.abort(), 60000);
 
     if (signal) {
         if (signal.aborted) {
@@ -79,6 +79,6 @@ export async function requestGuidance(
         }
         throw err;
     } finally {
-        window.clearTimeout(timeoutId);
+        globalThis.clearTimeout(timeoutId);
     }
 }

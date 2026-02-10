@@ -46,6 +46,12 @@ export function Results() {
                     title="We need a few more details"
                     subtitle="Complete the earlier steps before generating your guidance."
                 />
+                <p className="mb-6 text-sm text-ink/60">
+                    {!categories.length && "Missing: Categories"}
+                    {categories.length > 0 && !details.dateOfBirth && "Missing: Date of birth"}
+                    {details.dateOfBirth && !details.timeOfBirth && "Missing: Time of birth"}
+                    {details.timeOfBirth && !details.placeOfBirth && "Missing: Place of birth"}
+                </p>
                 <button
                     type="button"
                     className="primary-button"
@@ -110,10 +116,14 @@ export function Results() {
                                     </span>
                                 </button>
                                 {isOpen ? (
-                                    <ul className="mt-5 space-y-3 text-base text-ink/75 md:text-lg">
-                                        {category.insights.map((insight, index) => (
-                                            <li key={`${category.category}-${index}`}>
-                                                • {insight}
+                                    <ul className="mt-5 space-y-4 text-base text-ink/75 md:text-lg">
+                                        {category.insights.map((item, index) => (
+                                            <li key={`${category.category}-${index}`} className="space-y-2 pb-3 border-b border-ink/10 last:border-b-0">
+                                                <p className="text-ink">{item.insight}</p>
+                                                <div className="flex flex-col gap-2 text-sm text-ink/60">
+                                                    <p><span className="font-semibold">Time:</span> {item.time_window}</p>
+                                                    <p><span className="font-semibold">Action:</span> {item.action_step}</p>
+                                                </div>
                                             </li>
                                         ))}
                                     </ul>
@@ -124,6 +134,13 @@ export function Results() {
                 </div>
             ) : null}
             <div className="flex flex-wrap gap-3">
+                <button
+                    type="button"
+                    className="ghost-button"
+                    onClick={() => navigate("/resonance")}
+                >
+                    Back to Traits
+                </button>
                 <button
                     type="button"
                     className="primary-button"
