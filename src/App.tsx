@@ -10,6 +10,7 @@ import { Resonance } from "./pages/Resonance";
 import { Results } from "./pages/Results";
 import { Chatbot } from "./pages/Chatbot";
 import { HowItWorks } from "./pages/HowItWorks";
+import { Admin } from "./pages/Admin";
 
 export default function App() {
     const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -43,6 +44,7 @@ export default function App() {
                         <Route path="/results" element={<Results />} />
                         <Route path="/chatbot" element={<Chatbot />} />
                         <Route path="/how-it-works" element={<HowItWorks />} />
+                        <Route path="/admin" element={<Admin />} />
                         <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                 </PageShell>
