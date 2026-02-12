@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Field } from "../components/Field";
 import { StepHeader } from "../components/StepHeader";
@@ -7,9 +7,11 @@ import { useGuidance } from "../context/GuidanceContext";
 export function BirthDetails() {
     const navigate = useNavigate();
     const { details, setDetails } = useGuidance();
+    const [errors, setErrors] = useState<Record<string, string>>({});
+
     useEffect(() => {
         document.title = "SoulPath | Birth Details";
-    }, []); const [errors, setErrors] = useState<Record<string, string>>({});
+    }, []);
 
     const handleChange = (field: keyof typeof details, value: string) => {
         setDetails({ ...details, [field]: value });
