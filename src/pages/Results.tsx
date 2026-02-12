@@ -144,6 +144,13 @@ export function Results() {
                 <button
                     type="button"
                     className="primary-button"
+                    onClick={() => navigate("/chatbot")}
+                >
+                    Ask Questions
+                </button>
+                <button
+                    type="button"
+                    className="ghost-button"
                     onClick={() => navigate("/categories")}
                 >
                     Start New Reading
