@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CategoryCard } from "../components/CategoryCard";
 import { StepHeader } from "../components/StepHeader";
@@ -17,6 +17,10 @@ export function Categories() {
     const navigate = useNavigate();
     const { categories, setCategories } = useGuidance();
     const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        document.title = "SoulPath | Categories";
+    }, []);
 
     const selected = useMemo(() => new Set(categories), [categories]);
 

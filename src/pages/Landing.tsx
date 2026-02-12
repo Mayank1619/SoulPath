@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { StepHeader } from "../components/StepHeader";
 
 export function Landing() {
+    useEffect(() => {
+        document.title = "SoulPath | Home";
+    }, []);
+
     return (
         <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-10">
@@ -14,9 +19,9 @@ export function Landing() {
                     <Link to="/categories" className="primary-button">
                         Get Your Guidance
                     </Link>
-                    <button type="button" className="ghost-button">
+                    <Link to="/how-it-works" className="ghost-button">
                         How it Works
-                    </button>
+                    </Link>
                 </div>
             </div>
             <div className="glass-card flex flex-col justify-between gap-6 px-8 py-10">

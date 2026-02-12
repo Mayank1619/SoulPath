@@ -19,6 +19,10 @@ export function Results() {
     const [openSections, setOpenSections] = useState<string[]>([]);
 
     useEffect(() => {
+        document.title = "SoulPath | Results";
+    }, []);
+
+    useEffect(() => {
         if (!response && !isLoading) {
             void generateGuidance();
         }

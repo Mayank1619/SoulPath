@@ -9,6 +9,7 @@ import { PalmUpload } from "./pages/PalmUpload";
 import { Resonance } from "./pages/Resonance";
 import { Results } from "./pages/Results";
 import { Chatbot } from "./pages/Chatbot";
+import { HowItWorks } from "./pages/HowItWorks";
 
 export default function App() {
     const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -41,6 +42,7 @@ export default function App() {
                         <Route path="/resonance" element={<Resonance />} />
                         <Route path="/results" element={<Results />} />
                         <Route path="/chatbot" element={<Chatbot />} />
+                        <Route path="/how-it-works" element={<HowItWorks />} />
                         <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                 </PageShell>

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 interface PageShellProps {
     children: ReactNode;
@@ -11,7 +12,9 @@ export function PageShell({ children, theme, onToggleTheme }: PageShellProps) {
         <div className="shell">
             <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-6 py-10">
                 <header className="flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.4em] text-rosewood/80">
-                    <span>SoulPath</span>
+                    <Link to="/" className="hover:text-rosewood transition-colors cursor-pointer">
+                        SoulPath
+                    </Link>
                     <div className="flex items-center gap-3">
                         <span className="hidden sm:inline">Astrology + Palmistry</span>
                         <button

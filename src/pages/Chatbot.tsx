@@ -21,6 +21,10 @@ export function Chatbot() {
     const abortControllerRef = useRef<AbortController | null>(null);
 
     useEffect(() => {
+        document.title = "SoulPath | Chat";
+    }, []);
+
+    useEffect(() => {
         // Initial welcome message
         if (messages.length === 0) {
             setMessages([

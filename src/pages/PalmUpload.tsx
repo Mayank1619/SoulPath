@@ -1,4 +1,5 @@
 import type { ChangeEvent } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { StepHeader } from "../components/StepHeader";
 import { useGuidance } from "../context/GuidanceContext";
@@ -6,6 +7,10 @@ import { useGuidance } from "../context/GuidanceContext";
 export function PalmUpload() {
     const navigate = useNavigate();
     const { palms, setPalms, resetResponse, resetPreview } = useGuidance();
+
+    useEffect(() => {
+        document.title = "SoulPath | Palm Upload";
+    }, []);
 
     const handleFileChange =
         (side: "left" | "right") => (event: ChangeEvent<HTMLInputElement>) => {

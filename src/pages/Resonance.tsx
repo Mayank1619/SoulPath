@@ -7,6 +7,11 @@ import { useGuidance } from "../context/GuidanceContext";
 
 export function Resonance() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.title = "SoulPath | Resonance";
+    }, []);
+
     const {
         details,
         traitsPreview,
