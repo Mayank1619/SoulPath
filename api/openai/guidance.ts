@@ -1,11 +1,9 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
-
 interface OpenAIResponse {
     choices?: Array<{ message?: { content?: string } }>;
     error?: { message?: string };
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: any, res: any) {
     if (req.method !== "POST") {
         res.statusCode = 405;
         res.setHeader("Allow", "POST");
