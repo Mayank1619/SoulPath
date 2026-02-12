@@ -1,4 +1,3 @@
-import { kv } from "@vercel/kv";
 import type { AuthConfig } from "@auth/core";
 import Google from "@auth/core/providers/google";
 
@@ -19,29 +18,11 @@ export const authConfig: AuthConfig = {
         strategy: "jwt",
     },
     callbacks: {
-        async signIn({ user, account }) {
+        async signIn({ user }) {
             if (!user?.id) {
                 return false;
             }
-
-            // Store user data in KV only if configured
-            try {
-                const record = {
-                    id: user.id,
-                    email: user.email ?? "",
-                    name: user.name ?? "",
-                    image: user.image ?? "",
-                    signupSource: account?.provider ?? "unknown",
-                    createdAt: new Date().toISOString(),
-                };
-
-                await kv.sadd("users", user.id);
-                await kv.hset(`user:${user.id}`, record);
-            } catch (err) {
-                // KV not configured, continue without storing
-                console.warn("KV not available:", err);
-            }
-
+            // User tracking will be added later with proper storage
             return true;
         },
         async session({ session, user }) {
