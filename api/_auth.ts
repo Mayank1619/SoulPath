@@ -71,11 +71,25 @@ export function buildAuthRequest(
     },
     baseUrl: string
 ) {
-    const url = new URL(req.url ?? "", baseUrl);
+    // Get the path from the request
+    const path = req.url || "/api/auth/signin";
+    const fullUrl = `${baseUrl}${path}`;
+    
+    const url = new URL(fullUrl);
     const headers = new Headers();
 
+    // Copy relevant headers
+    const headersToInclude = [
+        "host",
+        "user-agent",
+        "accept",
+        "content-type",
+        "cookie",
+        "referer",
+    ];
+
     Object.entries(req.headers).forEach(([key, value]) => {
-        if (!value) {
+        if (!value || !headersToInclude.includes(key.toLowerCase())) {
             return;
         }
 
@@ -87,10 +101,13 @@ export function buildAuthRequest(
     });
 
     const method = req.method?.toUpperCase() ?? "GET";
-    const body =
-        method === "GET" || method === "HEAD"
-            ? undefined
-            : JSON.stringify(req.body ?? {});
+    let body: BodyInit | undefined;
+
+    if (method !== "GET" && method !== "HEAD") {
+        if (req.body) {
+            body = typeof req.body === "string" ? req.body : JSON.stringify(req.body);
+        }
+    }
 
     return new Request(url, {
         method,
