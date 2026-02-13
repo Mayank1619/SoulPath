@@ -25,7 +25,8 @@ export async function getSession(): Promise<Session | null> {
 }
 
 export function signIn() {
-    window.location.href = "/api/auth/signin";
+    const callbackUrl = window.location.origin + "/categories";
+    window.location.href = `/api/auth/signin?callbackUrl=${encodeURIComponent(callbackUrl)}`;
 }
 
 export function signOut() {
