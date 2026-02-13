@@ -13,6 +13,10 @@ export const authConfig: AuthConfig = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
         }),
     ],
+    pages: {
+        signIn: "/",
+        error: "/",
+    },
     secret: process.env.AUTH_SECRET,
     trustHost: true,
     session: {
