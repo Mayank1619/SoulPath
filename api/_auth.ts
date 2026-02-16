@@ -24,24 +24,17 @@ export const authConfig: AuthConfig = {
                 return false;
             }
 
-            // Store user data in KV only if configured
-            try {
-                const record = {
-                    id: user.id,
-                    email: user.email ?? "",
-                    name: user.name ?? "",
-                    image: user.image ?? "",
-                    signupSource: account?.provider ?? "unknown",
-                    createdAt: new Date().toISOString(),
-                };
+            const record = {
+                id: user.id,
+                email: user.email ?? "",
+                name: user.name ?? "",
+                image: user.image ?? "",
+                signupSource: account?.provider ?? "unknown",
+                createdAt: new Date().toISOString(),
+            };
 
-                await kv.sadd("users", user.id);
-                await kv.hset(`user:${user.id}`, record);
-            } catch (err) {
-                // KV not configured, continue without storing
-                console.warn("KV not available:", err);
-            }
-
+            await kv.sadd("users", user.id);
+            await kv.hset(`user:${user.id}`, record);
             return true;
         },
         async session({ session, user }) {

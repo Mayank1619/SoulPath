@@ -44,22 +44,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return;
     }
 
-    try {
-        const userIds = await kv.smembers("users");
-        const users = await Promise.all(
-            userIds.map(async (id) => {
-                const record = await kv.hgetall<Record<string, string>>(`user:${id}`);
-                return record ?? { id };
-            })
-        );
+    const userIds = await kv.smembers("users");
+    const users = await Promise.all(
+        userIds.map(async (id) => {
+            const record = await kv.hgetall<Record<string, string>>(`user:${id}`);
+            return record ?? { id };
+        })
+    );
 
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "application/json");
-        res.end(JSON.stringify({ users }));
-    } catch (err) {
-        // KV not configured
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "application/json");
-        res.end(JSON.stringify({ users: [], message: "KV storage not configured. Set up Upstash Redis to track users." }));
-    }
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify({ users }));
 }
