@@ -1,7 +1,8 @@
 import { Auth } from "@auth/core";
-import { authConfig, buildAuthRequest, getBaseUrl, isAdminEmail } from "../_auth.js";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { authConfig, buildAuthRequest, getBaseUrl, isAdminEmail } from "../_auth";
 
-async function getSession(req: any) {
+async function getSession(req: VercelRequest) {
     const baseUrl = getBaseUrl(req);
     const sessionRequest = buildAuthRequest(
         {
@@ -24,7 +25,7 @@ async function getSession(req: any) {
     }
 }
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (req.method !== "GET") {
         res.statusCode = 405;
         res.setHeader("Allow", "GET");
@@ -45,8 +46,8 @@ export default async function handler(req: any, res: any) {
     // User storage not yet implemented
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify({
-        users: [],
-        message: "User tracking will be available soon. Currently using JWT-only sessions."
+    res.end(JSON.stringify({ 
+        users: [], 
+        message: "User tracking will be available soon. Currently using JWT-only sessions." 
     }));
 }
