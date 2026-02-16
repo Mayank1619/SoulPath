@@ -1,5 +1,6 @@
 import { Auth } from "@auth/core";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { kv } from "@vercel/kv";
 import { authConfig, buildAuthRequest, getBaseUrl, isAdminEmail } from "../_auth";
 
 async function getSession(req: VercelRequest) {
@@ -43,11 +44,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return;
     }
 
-    // User storage not yet implemented
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify({ 
-        users: [], 
-        message: "User tracking will be available soon. Currently using JWT-only sessions." 
-    }));
+    try {
+        const userIds = await kv.smembers("users");
+        const users = await Promise.all(
+            userIds.map(async (id) => {
+                const record = await kv.hgetall<Record<string, string>>(`user:${id}`);
+                return record ?? { id };
+            })
+        );
+
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "application/json");
+        res.end(JSON.stringify({ users }));
+    } catch (err) {
+        // KV not configured
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "application/json");
+        res.end(JSON.stringify({ users: [], message: "KV storage not configured. Set up Upstash Redis to track users." }));
+    }
 }
