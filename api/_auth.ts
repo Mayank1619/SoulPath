@@ -74,7 +74,7 @@ export function buildAuthRequest(
     // Get the path from the request
     const path = req.url || "/api/auth/signin";
     const fullUrl = `${baseUrl}${path}`;
-
+    
     const url = new URL(fullUrl);
     const headers = new Headers();
 
