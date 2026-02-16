@@ -7,7 +7,7 @@ export default async function handler(req: any, res: any) {
     const response = await Auth(request, authConfig);
 
     res.statusCode = response.status;
-
+    
     // Copy headers from Auth response
     const headers = response.headers as any;
     if (headers && typeof headers.forEach === 'function') {
