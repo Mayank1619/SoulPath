@@ -29,3 +29,13 @@ dist-ssr
 
 .vercel
 .env*.local
+
+# Capacitor
+ios/App/Pods
+ios/App/Podfile.lock
+ios/App/build
+android/.gradle
+android/build
+android/app/build
+android/.idea
+android/local.properties

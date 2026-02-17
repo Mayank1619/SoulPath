@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Astroya SoulPath</string>
+    <string name="title_activity_main">Astroya SoulPath</string>
+    <string name="package_name">com.astroya.soulpath</string>
+    <string name="custom_url_scheme">com.astroya.soulpath</string>
+</resources>

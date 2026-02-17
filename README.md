@@ -9,6 +9,7 @@ A calm, minimalist astrology and palmistry guidance experience built with React,
 - Prompt builder and OpenAI service integration
 - Calm, premium UI with soft cards, gradients, and motion
 - Responsive layout for mobile and desktop
+- **Native iOS and Android apps** with Capacitor
 
 ## Setup
 1. Install dependencies:
@@ -47,6 +48,103 @@ A calm, minimalist astrology and palmistry guidance experience built with React,
 - Users must sign up or log in to access the guidance features
 - Supports Email/Password and Google authentication
 - Protected routes redirect unauthenticated users to the login page
+
+## Mobile Development (iOS & Android)
+
+This app is configured with **Capacitor** to build native iOS and Android apps from the same codebase.
+
+### Quick Commands
+
+```bash
+# Sync web app to native platforms
+npm run cap:sync
+
+# Open in Android Studio
+npm run cap:open:android
+
+# Open in Xcode (macOS only)
+npm run cap:open:ios
+
+# Run on Android device/emulator
+npm run cap:run:android
+
+# Run on iOS device/simulator (macOS only)
+npm run cap:run:ios
+```
+
+### iOS Development (macOS Required)
+
+**Prerequisites:**
+- macOS with Xcode 14+ installed
+- CocoaPods: `sudo gem install cocoapods`
+
+**Steps:**
+1. Build and sync: `npm run cap:sync`
+2. Navigate to iOS folder: `cd ios/App`
+3. Install pods: `pod install`
+4. Open in Xcode: `npm run cap:open:ios`
+5. Select a simulator/device and click Run
+
+**Note:** iOS development requires a Mac. On Windows, the ios folder is created but cannot be built.
+
+### Android Development
+
+**Prerequisites:**
+- Android Studio installed
+- Android SDK 26+ (configured in Android Studio)
+- Java Development Kit (JDK) 17+
+
+**Steps:**
+1. Build and sync: `npm run cap:sync`
+2. Open in Android Studio: `npm run cap:open:android`
+3. Wait for Gradle sync to complete
+4. Select a device/emulator and click Run
+
+### Making Changes
+
+After updating your React code:
+
+```bash
+# Rebuild and sync to native platforms
+npm run cap:sync
+```
+
+This command:
+1. Builds your web app (`npm run build`)
+2. Copies the build to iOS and Android
+3. Updates native dependencies
+
+### Firebase Configuration for Mobile
+
+When deploying to mobile, update your Firebase console:
+
+1. **iOS:** Add your iOS bundle ID (`com.astroya.soulpath`) in Firebase Console > Project Settings > Add App > iOS
+2. **Android:** Add your Android package name (`com.astroya.soulpath`) in Firebase Console > Project Settings > Add App > Android
+3. Download and add platform-specific config files:
+   - iOS: `GoogleService-Info.plist` → `ios/App/App/`
+   - Android: `google-services.json` → `android/app/`
+
+### App Store Deployment
+
+**iOS (TestFlight/App Store):**
+1. Configure signing in Xcode (requires Apple Developer account - $99/year)
+2. Archive the app: Product > Archive
+3. Upload to App Store Connect
+4. Submit for review
+
+**Android (Google Play):**
+1. Generate a signing key: [Android docs](https://developer.android.com/studio/publish/app-signing)
+2. Build release APK/AAB in Android Studio
+3. Upload to Google Play Console
+4. Submit for review (one-time $25 registration fee)
+
+### Recommended: Automated Deployments
+
+For seamless updates without app store reviews:
+
+- **Capgo** (OTA updates): Live updates like Vercel for mobile
+- **GitHub Actions**: Automate builds on every push
+- **Fastlane**: Automate app store submissions
 
 ## Notes
 - Palm images are stored only in local state for preview.
