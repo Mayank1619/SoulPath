@@ -11,10 +11,25 @@ export function BirthDetails() {
 
     useEffect(() => {
         document.title = "SoulPath | Birth Details";
+        
+        // Load saved details from localStorage
+        const saved = localStorage.getItem("soulpath-birth-details");
+        if (saved && !details.dateOfBirth) {
+            try {
+                const parsed = JSON.parse(saved);
+                setDetails(parsed);
+            } catch {
+                // Ignore parse errors
+            }
+        }
     }, []);
 
     const handleChange = (field: keyof typeof details, value: string) => {
-        setDetails({ ...details, [field]: value });
+        const updated = { ...details, [field]: value };
+        setDetails(updated);
+        
+        // Save to localStorage for autofill
+        localStorage.setItem("soulpath-birth-details", JSON.stringify(updated));
     };
 
     const validate = () => {
@@ -54,6 +69,7 @@ export function BirthDetails() {
                     placeholder="Your name"
                     value={details.name}
                     onChange={(event) => handleChange("name", event.target.value)}
+                    autoComplete="name"
                 />
                 <Field
                     label="Date of Birth"
@@ -63,6 +79,8 @@ export function BirthDetails() {
                     value={details.dateOfBirth}
                     onChange={(event) => handleChange("dateOfBirth", event.target.value)}
                     error={errors.dateOfBirth}
+                    autoComplete="bday"
+                    max={new Date().toISOString().split('T')[0]}
                 />
                 <Field
                     label="Time of Birth"
