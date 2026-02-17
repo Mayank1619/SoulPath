@@ -7,14 +7,14 @@ export function Landing() {
     const { currentUser } = useAuth();
 
     useEffect(() => {
-        document.title = "SoulPath | Home";
+        document.title = "Astoya SoulPath | Home";
     }, []);
 
     return (
         <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-10">
                 <StepHeader
-                    eyebrow="SoulPath"
+                    eyebrow="Astoya SoulPath"
                     title="A calm compass for your next chapter"
                     subtitle="Blend Vedic astrology and palmistry to surface gentle, grounded guidance for health, career, relationships, wealth, and spiritual growth."
                 />

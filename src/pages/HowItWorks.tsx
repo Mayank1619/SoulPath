@@ -4,20 +4,20 @@ import { StepHeader } from "../components/StepHeader";
 
 export function HowItWorks() {
     useEffect(() => {
-        document.title = "SoulPath | How It Works";
+        document.title = "Astoya SoulPath | How It Works";
     }, []);
 
     return (
         <section className="space-y-8">
             <StepHeader
                 eyebrow="How It Works"
-                title="Discover Your SoulPath"
+                title="Discover Your Astoya SoulPath"
                 subtitle="Ancient wisdom meets modern insight"
             />
 
             <div className="glass-card px-8 py-10 space-y-6">
                 <p className="text-base md:text-lg text-ink/80 leading-relaxed">
-                    SoulPath blends ancient astrology, Vedic sciences, and palmistry to give you a deeper understanding of your life's journey. Using the details you provide, our system generates a personalized Past & Present Report—a foundation that helps you confirm whether the insights resonate with your experiences. This ensures the attributes we calculate are aligned with your unique story.
+                    Astoya SoulPath blends ancient astrology, Vedic sciences, and palmistry to give you a deeper understanding of your life's journey. Using the details you provide, our system generates a personalized Past & Present Report—a foundation that helps you confirm whether the insights resonate with your experiences. This ensures the attributes we calculate are aligned with your unique story.
                 </p>
 
                 <p className="text-base md:text-lg text-ink/80 leading-relaxed">
@@ -25,7 +25,7 @@ export function HowItWorks() {
                 </p>
 
                 <p className="text-base md:text-lg text-ink/80 leading-relaxed">
-                    If you're curious to explore further, SoulPath includes a <span className="font-semibold text-purple-600">free interactive AI‑powered consultation</span> trained on ancient Vedic knowledge. Simply sign in after viewing your predictions to unlock chat-based guidance. You can ask questions, dive deeper into your chart, or have a live conversation to understand your predictions in a more intuitive way—at no cost.
+                    If you're curious to explore further, Astoya SoulPath includes a <span className="font-semibold text-purple-600">free interactive AI‑powered consultation</span> trained on ancient Vedic knowledge. Simply sign in after viewing your predictions to unlock chat-based guidance. You can ask questions, dive deeper into your chart, or have a live conversation to understand your predictions in a more intuitive way—at no cost.
                 </p>
 
                 <p className="text-base md:text-lg text-ink/80 leading-relaxed font-semibold">

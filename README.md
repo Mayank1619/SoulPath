@@ -1,4 +1,4 @@
-# SoulPath
+# Astoya SoulPath
 
 A calm, minimalist astrology and palmistry guidance experience built with React, TypeScript, Vite, and Tailwind CSS. Features Firebase authentication for secure user access.
 

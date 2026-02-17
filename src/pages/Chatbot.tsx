@@ -21,7 +21,7 @@ export function Chatbot() {
     const abortControllerRef = useRef<AbortController | null>(null);
 
     useEffect(() => {
-        document.title = "SoulPath | Chat";
+        document.title = "Astoya SoulPath | Chat";
     }, []);
 
     useEffect(() => {
@@ -30,7 +30,7 @@ export function Chatbot() {
             setMessages([
                 {
                     role: "assistant",
-                    content: "Welcome! I'm here to help answer any questions about your SoulPath reading. Feel free to ask me anything about the insights you received, or dive deeper into specific aspects of your guidance.",
+                    content: "Welcome! I'm here to help answer any questions about your Astoya SoulPath reading. Feel free to ask me anything about the insights you received, or dive deeper into specific aspects of your guidance.",
                     timestamp: new Date(),
                 },
             ]);

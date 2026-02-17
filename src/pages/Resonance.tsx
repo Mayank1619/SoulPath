@@ -9,7 +9,7 @@ export function Resonance() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.title = "SoulPath | Resonance";
+        document.title = "Astoya SoulPath | Resonance";
     }, []);
 
     const {
