@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
 import { GuidanceProvider } from "./context/GuidanceContext";
 import { PageShell } from "./components/PageShell";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Landing } from "./pages/Landing";
+import { Login } from "./pages/Login";
+import { Signup } from "./pages/Signup";
 import { Categories } from "./pages/Categories";
 import { BirthDetails } from "./pages/BirthDetails";
 import { PalmUpload } from "./pages/PalmUpload";
@@ -32,21 +36,32 @@ export default function App() {
 
     return (
         <BrowserRouter>
-            <GuidanceProvider>
-                <PageShell theme={theme} onToggleTheme={handleToggleTheme}>
-                    <Routes>
-                        <Route path="/" element={<Landing />} />
-                        <Route path="/categories" element={<Categories />} />
-                        <Route path="/birth-details" element={<BirthDetails />} />
-                        <Route path="/palm-upload" element={<PalmUpload />} />
-                        <Route path="/resonance" element={<Resonance />} />
-                        <Route path="/results" element={<Results />} />
-                        <Route path="/chatbot" element={<Chatbot />} />
-                        <Route path="/how-it-works" element={<HowItWorks />} />
-                        <Route path="*" element={<Navigate to="/" replace />} />
-                    </Routes>
-                </PageShell>
-            </GuidanceProvider>
+            <AuthProvider>
+                <GuidanceProvider>
+                    <PageShell theme={theme} onToggleTheme={handleToggleTheme}>
+                        <Routes>
+                            <Route path="/" element={<Landing />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/signup" element={<Signup />} />
+                            <Route path="/how-it-works" element={<HowItWorks />} />
+                            <Route path="/categories" element={<Categories />} />
+                            <Route path="/birth-details" element={<BirthDetails />} />
+                            <Route path="/palm-upload" element={<PalmUpload />} />
+                            <Route path="/resonance" element={<Resonance />} />
+                            <Route path="/results" element={<Results />} />
+                            <Route
+                                path="/chatbot"
+                                element={
+                                    <ProtectedRoute>
+                                        <Chatbot />
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route path="*" element={<Navigate to="/" replace />} />
+                        </Routes>
+                    </PageShell>
+                </GuidanceProvider>
+            </AuthProvider>
         </BrowserRouter>
     );
 }

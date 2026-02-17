@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { StepHeader } from "../components/StepHeader";
+import { useAuth } from "../context/AuthContext";
 
 export function Landing() {
+    const { currentUser } = useAuth();
+
     useEffect(() => {
         document.title = "SoulPath | Home";
     }, []);
@@ -16,9 +19,20 @@ export function Landing() {
                     subtitle="Blend Vedic astrology and palmistry to surface gentle, grounded guidance for health, career, relationships, wealth, and spiritual growth."
                 />
                 <div className="flex flex-wrap gap-4">
-                    <Link to="/categories" className="primary-button">
-                        Get Your Guidance
-                    </Link>
+                    {currentUser ? (
+                        <Link to="/categories" className="primary-button">
+                            Get Your Guidance
+                        </Link>
+                    ) : (
+                        <>
+                            <Link to="/signup" className="primary-button">
+                                Get Started
+                            </Link>
+                            <Link to="/login" className="ghost-button">
+                                Sign In
+                            </Link>
+                        </>
+                    )}
                     <Link to="/how-it-works" className="ghost-button">
                         How it Works
                     </Link>
@@ -35,6 +49,10 @@ export function Landing() {
                         <li>Guidance categories you choose</li>
                         <li>Optional palm images for nuance</li>
                     </ul>
+                </div>
+                <div className="rounded-xl border border-purple-400/40 bg-purple-50/80 dark:bg-purple-900/20 px-5 py-4 text-sm text-ink">
+                    <p className="font-semibold mb-1">✨ Free AI Consultation</p>
+                    <p className="text-ink/70">Sign in after viewing your predictions to get free chat-based consultation powered by ancient Vedic wisdom.</p>
                 </div>
                 <div className="rounded-xl border border-ember/40 bg-white/80 px-5 py-4 text-sm text-ink/70">
                     SoulPath never stores your details. Your inputs are used only to craft the

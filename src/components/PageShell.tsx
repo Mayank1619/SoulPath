@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { UserMenu } from "./UserMenu";
 
 interface PageShellProps {
     children: ReactNode;
@@ -29,6 +30,7 @@ export function PageShell({
                         >
                             {theme === "dark" ? "Light Mode" : "Dark Mode"}
                         </button>
+                        <UserMenu />
                     </div>
                 </header>
                 <main className="mt-10 flex-1 animate-fadeUp">{children}</main>

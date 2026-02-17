@@ -25,12 +25,22 @@ export function HowItWorks() {
                 </p>
 
                 <p className="text-base md:text-lg text-ink/80 leading-relaxed">
-                    If you're curious to explore further, SoulPath includes an interactive AI‑powered guide trained on ancient Vedic knowledge. You can ask questions, dive deeper into your chart, or have a live chat session to understand your predictions in a more conversational and intuitive way.
+                    If you're curious to explore further, SoulPath includes a <span className="font-semibold text-purple-600">free interactive AI‑powered consultation</span> trained on ancient Vedic knowledge. Simply sign in after viewing your predictions to unlock chat-based guidance. You can ask questions, dive deeper into your chart, or have a live conversation to understand your predictions in a more intuitive way—at no cost.
                 </p>
 
                 <p className="text-base md:text-lg text-ink/80 leading-relaxed font-semibold">
                     SoulPath is designed to help you reflect, realign, and move forward with confidence—rooted in wisdom that has guided generations.
                 </p>
+            </div>
+
+            <div className="glass-card px-6 py-5 bg-purple-50/50 dark:bg-purple-900/10 border border-purple-400/30">
+                <h3 className="text-lg font-semibold text-ink mb-2">Quick Summary</h3>
+                <ul className="space-y-2 text-sm text-ink/70">
+                    <li>✓ Get your personalized predictions instantly—no sign-up required</li>
+                    <li>✓ Review your Past & Present Report to confirm accuracy</li>
+                    <li>✓ Unlock detailed future insights for the years ahead</li>
+                    <li>✓ Sign in anytime for <span className="font-semibold text-purple-600">free AI chat consultation</span></li>
+                </ul>
             </div>
 
             <div className="flex flex-wrap gap-3">

@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ErrorState } from "../components/ErrorState";
 import { LoadingState } from "../components/LoadingState";
 import { StepHeader } from "../components/StepHeader";
 import { useGuidance } from "../context/GuidanceContext";
+import { useAuth } from "../context/AuthContext";
 
 export function Results() {
     const navigate = useNavigate();
+    const { currentUser } = useAuth();
     const {
         details,
         categories,
@@ -137,6 +139,22 @@ export function Results() {
                     })}
                 </div>
             ) : null}
+            {!currentUser && response ? (
+                <div className="glass-card px-6 py-6 border-2 border-purple-400">
+                    <h3 className="text-xl font-semibold text-ink mb-3">Want to dive deeper?</h3>
+                    <p className="text-base text-ink/70 mb-4">
+                        Sign in for <span className="font-semibold text-purple-600">free AI-powered chat consultation</span> to ask questions about your predictions and get personalized guidance based on ancient Vedic wisdom.
+                    </p>
+                    <div className="flex flex-wrap gap-3">
+                        <Link to="/signup" className="primary-button">
+                            Sign Up for Free Chat
+                        </Link>
+                        <Link to="/login" className="ghost-button">
+                            Already have an account? Sign In
+                        </Link>
+                    </div>
+                </div>
+            ) : null}
             <div className="flex flex-wrap gap-3">
                 <button
                     type="button"
@@ -145,13 +163,15 @@ export function Results() {
                 >
                     Back to Traits
                 </button>
-                <button
-                    type="button"
-                    className="primary-button"
-                    onClick={() => navigate("/chatbot")}
-                >
-                    Ask Questions
-                </button>
+                {currentUser ? (
+                    <button
+                        type="button"
+                        className="primary-button"
+                        onClick={() => navigate("/chatbot")}
+                    >
+                        Ask Questions (Free)
+                    </button>
+                ) : null}
                 <button
                     type="button"
                     className="ghost-button"
