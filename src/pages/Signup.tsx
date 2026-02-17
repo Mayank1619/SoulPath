@@ -20,7 +20,7 @@ export const Signup = () => {
     }, [currentUser, navigate]);
 
     useEffect(() => {
-        document.title = "Astoya SoulPath | Sign Up";
+        document.title = "Astroya SoulPath | Sign Up";
     }, []);
 
     const handleSubmit = async (e: { preventDefault: () => void }) => {

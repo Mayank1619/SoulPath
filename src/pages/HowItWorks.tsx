@@ -4,14 +4,14 @@ import { StepHeader } from "../components/StepHeader";
 
 export function HowItWorks() {
     useEffect(() => {
-        document.title = "Astoya SoulPath | How It Works";
+        document.title = "Astroya SoulPath | How It Works";
     }, []);
 
     return (
         <section className="space-y-8">
             <StepHeader
                 eyebrow="How It Works"
-                title="Discover Your Astoya SoulPath"
+                title="Discover Your Astroya SoulPath"
                 subtitle="Ancient wisdom meets modern insight"
             />
 

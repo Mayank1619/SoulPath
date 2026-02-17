@@ -10,7 +10,7 @@ export function BirthDetails() {
     const [errors, setErrors] = useState<Record<string, string>>({});
 
     useEffect(() => {
-        document.title = "Astoya SoulPath | Birth Details";
+        document.title = "Astroya SoulPath | Birth Details";
         
         // Load saved details from localStorage
         const saved = localStorage.getItem("soulpath-birth-details");

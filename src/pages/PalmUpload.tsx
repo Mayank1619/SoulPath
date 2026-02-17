@@ -9,7 +9,7 @@ export function PalmUpload() {
     const { palms, setPalms, resetResponse, resetPreview } = useGuidance();
 
     useEffect(() => {
-        document.title = "Astoya SoulPath | Palm Upload";
+        document.title = "Astroya SoulPath | Palm Upload";
     }, []);
 
     const handleFileChange =

@@ -7,14 +7,14 @@ export function Landing() {
     const { currentUser } = useAuth();
 
     useEffect(() => {
-        document.title = "Astoya SoulPath | Home";
+        document.title = "Astroya SoulPath | Home";
     }, []);
 
     return (
         <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-10">
                 <StepHeader
-                    eyebrow="Astoya SoulPath"
+                    eyebrow="Astroya SoulPath"
                     title="A calm compass for your next chapter"
                     subtitle="Blend Vedic astrology and palmistry to surface gentle, grounded guidance for health, career, relationships, wealth, and spiritual growth."
                 />
@@ -25,7 +25,7 @@ export function Landing() {
                         </Link>
                     ) : (
                         <>
-                            <Link to="/signup" className="primary-button">
+                            <Link to="/categories" className="primary-button">
                                 Get Started
                             </Link>
                             <Link to="/login" className="ghost-button">

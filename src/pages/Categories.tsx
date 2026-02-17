@@ -19,7 +19,7 @@ export function Categories() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        document.title = "Astoya SoulPath | Categories";
+        document.title = "Astroya SoulPath | Categories";
     }, []);
 
     const selected = useMemo(() => new Set(categories), [categories]);

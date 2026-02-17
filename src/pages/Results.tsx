@@ -21,7 +21,7 @@ export function Results() {
     const [openSections, setOpenSections] = useState<string[]>([]);
 
     useEffect(() => {
-        document.title = "Astoya SoulPath | Results";
+        document.title = "Astroya SoulPath | Results";
     }, []);
 
     useEffect(() => {
@@ -92,7 +92,7 @@ export function Results() {
         <section className="space-y-8">
             <StepHeader
                 eyebrow="Your Reading"
-                title="Astoya SoulPath Guidance"
+                title="Astroya SoulPath Guidance"
                 subtitle="Breathe slowly and read each insight as a gentle invitation, not a fixed destiny."
             />
             {isLoading ? <LoadingState /> : null}
