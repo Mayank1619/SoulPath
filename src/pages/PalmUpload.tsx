@@ -105,6 +105,9 @@ export function PalmUpload() {
                 <button type="button" className="primary-button" onClick={handleContinue}>
                     Generate Guidance
                 </button>
+                <button type="button" className="ghost-button" onClick={handleContinue}>
+                    Continue Without Palm Images
+                </button>
                 <button
                     type="button"
                     className="ghost-button"
