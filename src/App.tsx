@@ -14,6 +14,9 @@ import { Resonance } from "./pages/Resonance";
 import { Results } from "./pages/Results";
 import { Chatbot } from "./pages/Chatbot";
 import { HowItWorks } from "./pages/HowItWorks";
+import BlogsList from "./pages/BlogsList";
+import BlogPage from "./pages/BlogPage";
+import BlogAdmin from "./pages/BlogAdmin";
 
 export default function App() {
     const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -54,6 +57,16 @@ export default function App() {
                                 element={
                                     <ProtectedRoute>
                                         <Chatbot />
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route path="/blogs" element={<BlogsList />} />
+                            <Route path="/blog/:slug" element={<BlogPage />} />
+                            <Route
+                                path="/admin/blogs"
+                                element={
+                                    <ProtectedRoute>
+                                        <BlogAdmin />
                                     </ProtectedRoute>
                                 }
                             />

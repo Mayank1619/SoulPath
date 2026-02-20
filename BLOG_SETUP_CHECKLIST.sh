@@ -1,0 +1,133 @@
+#!/bin/bash
+# Blog System Setup Checklist
+# Run through these steps to complete the blog system implementation
+
+echo "======================================"
+echo "SoulPath Blog System Setup Checklist"
+echo "======================================"
+echo ""
+
+# Step 1: Verify all files are created
+echo "✅ Step 1: Verify all files are created"
+echo "   Files created:"
+echo "   - src/services/blogService.ts"
+echo "   - src/pages/BlogsList.tsx"
+echo "   - src/pages/BlogPage.tsx"
+echo "   - src/pages/BlogAdmin.tsx"
+echo "   - api/blogs/createFromMake.ts"
+echo "   - firestore.rules"
+echo "   - BLOG_SETUP.md"
+echo "   - BLOG_IMPLEMENTATION.md"
+echo ""
+
+# Step 2: Routes added to App.tsx
+echo "✅ Step 2: Routes added to App.tsx"
+echo "   Routes added:"
+echo "   - /blogs (BlogsList)"
+echo "   - /blog/:slug (BlogPage)"
+echo "   - /admin/blogs (BlogAdmin - protected)"
+echo ""
+
+# Step 3: Environment Variables
+echo "⏳ Step 3: Set up environment variables"
+echo "   Add to Vercel:"
+echo "   1. Go to: https://vercel.com/dashboard"
+echo "   2. Select your 'soul-path' project"
+echo "   3. Go to Settings > Environment Variables"
+echo "   4. Add new variable:"
+echo "      Name: MAKE_API_KEY"
+echo "      Value: $(openssl rand -hex 32 2>/dev/null || echo 'generate-a-random-string')"
+echo "   5. Save and redeploy"
+echo ""
+
+# Step 4: Firebase Setup
+echo "⏳ Step 4: Firebase Firestore Setup"
+echo "   1. Go to: https://console.firebase.google.com/"
+echo "   2. Select 'soulpath-795e4' project"
+echo "   3. Create Firestore Database (if not done)"
+echo "   4. Copy firestore.rules content to Firebase Console"
+echo "      Path: Firestore Database > Rules"
+echo "   5. Click Publish"
+echo ""
+
+# Step 5: Deploy Firestore Rules
+echo "⏳ Step 5: Deploy Firestore Rules"
+echo "   Run in terminal:"
+echo "   firebase login"
+echo "   firebase init"
+echo "   firebase deploy --only firestore:rules"
+echo ""
+
+# Step 6: Set Admin User
+echo "⏳ Step 6: Create Admin User"
+echo "   1. Go to: https://console.firebase.google.com/"
+echo "   2. Fire base > Authentication > Users"
+echo "   3. Click on your user"
+echo "   4. Scroll down to 'Custom claims'"
+echo "   5. Add: { \"role\": \"admin\" }"
+echo "   6. Click Save"
+echo ""
+
+# Step 7: Verify Routes
+echo "⏳ Step 7: Verify Blog Routes in Browser"
+echo "   1. Start dev server: npm run dev (or already running)"
+echo "   2. Visit: http://localhost:5174/blogs"
+echo "   3. Should show empty blog list (no posts yet)"
+echo "   4. Visit: http://localhost:5174/admin/blogs"
+echo "   5. Should show admin panel (if logged in as admin)"
+echo ""
+
+# Step 8: Create First Blog Post
+echo "⏳ Step 8: Create Your First Blog Post"
+echo "   1. Login to your account"
+echo "   2. Go to: http://localhost:5174/admin/blogs"
+echo "   3. Click 'Create New Post'"
+echo "   4. Fill in the form:"
+echo "      Title: Test Blog Post"
+echo "      Slug: test-blog-post"
+echo "      Content: <h1>Welcome</h1><p>Your first blog post</p>"
+echo "      Image: (optional)"
+echo "      Published: Yes"
+echo "   5. Click 'Create Post'"
+echo "   6. Post should now appear on /blogs page"
+echo ""
+
+# Step 9: Test API Endpoint
+echo "⏳ Step 9: Test Make.com API Endpoint"
+echo "   Run in terminal:"
+echo "   curl -X POST http://localhost:3000/api/blogs/createFromMake \\"
+echo "     -H \"x-api-key: your-make-api-key\" \\"
+echo "     -H \"Content-Type: application/json\" \\"
+echo "     -d '{"
+echo "       \"title\": \"Test from Make\","
+echo "       \"slug\": \"test-from-make\","
+echo "       \"content\": \"<p>Created via Make.com</p>\","
+echo "       \"coverImageUrl\": \"https://example.com/image.jpg\","
+echo "       \"published\": true,"
+echo "       \"source\": \"make\""
+echo "     }'"
+echo ""
+
+# Step 10: Configure Make.com (Optional)
+echo "⏳ Step 10: Configure Make.com Automation (Optional)"
+echo "   Click to visit: https://www.make.com"
+echo "   Reference: See BLOG_SETUP.md section 6.2 for detailed steps"
+echo "   You'll need:"
+echo "   - Your Vercel domain"
+echo "   - Your MAKE_API_KEY from Vercel"
+echo ""
+
+echo "======================================"
+echo "Setup Complete!"
+echo "======================================"
+echo ""
+echo "📖 For detailed documentation:"
+echo "   - BLOG_SETUP.md (comprehensive guide)"
+echo "   - BLOG_IMPLEMENTATION.md (quick reference)"
+echo ""
+echo "🔗 Quick Links:"
+echo "   - Blogs: http://localhost:5174/blogs"
+echo "   - Admin: http://localhost:5174/admin/blogs"
+echo "   - Firebase: https://console.firebase.google.com/"
+echo "   - Vercel: https://vercel.com/dashboard"
+echo ""

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ErrorState } from "../components/ErrorState";
-import { LoadingState } from "../components/LoadingState";
+import ErrorState from "../components/ErrorState";
+import LoadingState from "../components/LoadingState";
 import { StepHeader } from "../components/StepHeader";
 import { useGuidance } from "../context/GuidanceContext";
 
